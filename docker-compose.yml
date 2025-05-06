@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     environment:
-      WORDPRESS_DB_HOST: databaseword.clcoysmgg2k7.us-east-1.rds.amazonaws.com:3306
+      WORDPRESS_DB_HOST: wordpress.clcoysmgg2k7.us-east-1.rds.amazonaws.com:3306
       WORDPRESS_DB_USER: admin
       WORDPRESS_DB_PASSWORD: 997956257
       WORDPRESS_DB_NAME: databaseword
