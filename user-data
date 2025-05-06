@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Atualiza os pacotes do sistema
+yum update -y
+
+# Instala pacotes necessários
+yum install -y ca-certificates wget amazon-efs-utils
+
+# Instala o Docker
+yum install -y docker
+
+# Inicia e habilita o Docker
+systemctl enable docker
+systemctl start docker
+
+# Corrige o nome do usuário (era ec2 -user, o correto é ec2-user)
+usermod -aG docker ec2-user
+
+# Instala o Docker Compose manualmente
+curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+# Cria diretório de montagem do EFS
+mkdir -p /data
+
+# Monta o EFS (corrigido: o nome 'efs' estava sobrando antes de /data)
+mount -t efs -o tls fs-06ed311412509e68e:/ /data
+
+# Baixa o docker-compose.yml do GitHub
+wget -O /home/ec2-user/docker-compose.yml https://raw.githubusercontent.com/mauricioBert/Docker_aws/refs/heads/main/docker-compose.yml
+
+# Ajusta permissões do arquivo para o usuário EC2
+chown ec2-user:ec2-user /home/ec2-user/docker-compose.yml
+
+# Executa o Docker Compose
+cd /home/ec2-user && docker-compose up -d
