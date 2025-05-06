@@ -9,6 +9,6 @@ services:
       WORDPRESS_DB_HOST: wordpress.clcoysmgg2k7.us-east-1.rds.amazonaws.com:3306
       WORDPRESS_DB_USER: admin
       WORDPRESS_DB_PASSWORD: 997956257
-      WORDPRESS_DB_NAME: databaseword
+      WORDPRESS_DB_NAME: wordpress
     volumes:
       - /data:/var/www/html
