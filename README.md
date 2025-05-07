@@ -58,10 +58,10 @@ Certifique-se de:
 
 | Serviço               | Nome     | Regras de Entrada                                                                 | Regras de Saída                                                      |
 |-----------------------|----------|------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| EC2                   | SG-EC2   | - HTTP - TCP - 80 - Origem: SG-CLB<br>- MYSQL/Aurora - TCP - 3306 - Origem: SG-RDS<br>- NFS - TCP - 2049 - Origem: SG-EFS | - Todo o tráfego - Tudo - Tudo - 0.0.0.0/0                            |
-| Classic Load Balancer | SG-CLB   | - HTTP - TCP - 80 - Origem: 0.0.0.0/0                                              | - HTTP - TCP - 80 - Destino: SG-EC2                                  |
-| EFS                   | SG-EFS   | - NFS - TCP - 2049 - Origem: SG-EC2                                               | - NFS - TCP - 2049 - Destino: SG-EC2                                 |
-| RDS MySQL             | SG-RDS   | - MYSQL/Aurora - TCP - 3306 - Origem: SG-EC2                                      | - MYSQL/Aurora - TCP - 3306 - Destino: SG-EC2                        |
+| EC2                   | SgEc2   | - HTTP - TCP - 80 - (SgClb) | - MYSQL/Aurora - TCP - 3306 - (SgRds) <br>- NFS - TCP - 2049 - (SgEfs) <br>- HTTP - TCP - 80 - (SgClb) <br>- All Traffic - All - All - 0.0.0.0/0                           |
+| CLB |SgClb   | - HTTP - TCP- 80- 0.0.0.0/0 - All Traffic                                              | - HTTP - TCP - 80 - (SgEc2)                                 |
+| EFS                   | SgEfs   | - NFS - TCP - 2049 - (SgEc2)                                               | - NFS - TCP - 2049 - (SgEc2)                                 |
+| RDS            | SgRds   | - MYSQL/Aurora - TCP - 3306 - (SgEc2)                                      | - MYSQL/Aurora - TCP - 3306 - (SgEc2)                      |
 
 ---
 
