@@ -1,7 +1,6 @@
 # Projeto AWS com Docker
 Este projeto demonstra como configurar uma infraestrutura escalável na AWS utilizando Docker, Auto Scaling Group, Load Balancer, EFS e RDS para hospedar uma aplicação WordPress.
 
-## Passos:
 ---
 🔧 Próximos passos:
 - Criação da VPC
