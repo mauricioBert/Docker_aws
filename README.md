@@ -337,5 +337,5 @@ echo "Configuração concluída com sucesso!"
 
 Agora, verifique se as instâncias foram criadas em **EC2 → Instâncias**. Em seguida, tente acessar a página do WordPress através do **DNS do Load Balancer**.
 
-💡 Após alguns minutos, as instâncias devem estar configuradas e o acesso ao WordPress liberado. Caso não consiga acessar, revise as configurações feitas até o momento.
+💡 Após alguns minutos, as instâncias devem estar configuradas e o acesso ao WordPress liberado.
 
